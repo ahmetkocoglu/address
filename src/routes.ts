@@ -1,0 +1,145 @@
+import { AddressController } from "./controller/AddressController"
+import { CityController } from "./controller/CityController"
+import { CountryController } from "./controller/CountryController"
+import { DistrictController } from "./controller/DistrictController"
+import { fileController } from "./controller/FileController"
+import { SearchController } from "./controller/SearchController"
+import { TownController } from "./controller/TownController"
+import { UserController } from "./controller/UserController"
+
+export const Routes = [{
+    method: "get",
+    route: "/users",
+    controller: UserController,
+    action: "all"
+}, {
+    method: "get",
+    route: "/users/search",
+    controller: UserController,
+    action: "search"
+}, {
+    method: "get",
+    route: "/users/:id",
+    controller: UserController,
+    action: "one"
+}, {
+    method: "post",
+    route: "/users",
+    controller: UserController,
+    action: "save"
+}, {
+    method: "put",
+    route: "/users/:id",
+    controller: UserController,
+    action: "update"
+}, {
+    method: "delete",
+    route: "/users/:id",
+    controller: UserController,
+    action: "remove"
+}, {
+    method: "get",
+    route: "/address",
+    controller: AddressController,
+    action: "all"
+}, {
+    method: "get",
+    route: "/address/:id",
+    controller: AddressController,
+    action: "one"
+}, {
+    method: "get",
+    route: "/address/user/:userId",
+    controller: AddressController,
+    action: "userOne"
+}, {
+    method: "post",
+    route: "/address",
+    controller: AddressController,
+    action: "save"
+}, {
+    method: "put",
+    route: "/address/:id",
+    controller: AddressController,
+    action: "update"
+}, {
+    method: "get",
+    route: "/country",
+    controller: CountryController,
+    action: "all"
+}, {
+    method: "get",
+    route: "/country/users/:countryId",
+    controller: CountryController,
+    action: "countryUsers"
+}, {
+    method: "post",
+    route: "/country",
+    controller: CountryController,
+    action: "save"
+}, {
+    method: "put",
+    route: "/country/:id",
+    controller: CountryController,
+    action: "update"
+}, {
+    method: "get",
+    route: "/cites",
+    controller: CityController,
+    action: "all"
+}, {
+    method: "get",
+    route: "/cites/users/:cityId",
+    controller: CityController,
+    action: "cityUsers"
+}, {
+    method: "post",
+    route: "/cites",
+    controller: CityController,
+    action: "save"
+}, {
+    method: "put",
+    route: "/cites/:id",
+    controller: CityController,
+    action: "update"
+}, {
+    method: "get",
+    route: "/district",
+    controller: DistrictController,
+    action: "all"
+}, {
+    method: "post",
+    route: "/district",
+    controller: DistrictController,
+    action: "save"
+}, {
+    method: "put",
+    route: "/district/:id",
+    controller: DistrictController,
+    action: "update"
+}, {
+    method: "get",
+    route: "/town",
+    controller: TownController,
+    action: "all"
+}, {
+    method: "post",
+    route: "/town",
+    controller: TownController,
+    action: "save"
+}, {
+    method: "put",
+    route: "/town/:id",
+    controller: TownController,
+    action: "update"
+}, {
+    method: "get",
+    route: "/file-read",
+    controller: fileController,
+    action: "all"
+}, {
+    method: "get",
+    route: "/search",
+    controller: SearchController,
+    action: "all"
+}]
