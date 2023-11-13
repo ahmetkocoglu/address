@@ -3,6 +3,7 @@ import * as bodyParser from "body-parser"
 import { Request, Response } from "express"
 import { AppDataSource } from "./data-source"
 import { Routes } from "./routes"
+import cors = require("cors")
 
 AppDataSource.initialize().then(async () => {
 
@@ -10,6 +11,7 @@ AppDataSource.initialize().then(async () => {
     const app = express()
     app.use(bodyParser.json())
     app.use(express.static('public'))
+    app.use(cors({credentials:true}))
     
     // register express routes from defined application routes
     Routes.forEach(route => {
@@ -28,8 +30,8 @@ AppDataSource.initialize().then(async () => {
     // ...
 
     // start express server
-    app.listen(3000)
+    app.listen(3080)
 
-    console.log("http://localhost:3000")
+    console.log("http://localhost:3080")
 
 }).catch(error => console.log(error))
