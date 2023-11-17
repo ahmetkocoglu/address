@@ -3,7 +3,11 @@ import { Address } from "./Address"
 import { District } from "./District"
 import { Country } from "./Country"
 
-@Entity()
+@Entity({
+    orderBy: {
+        id: 'DESC'
+    }
+})
 export class City {
 
     @PrimaryGeneratedColumn()

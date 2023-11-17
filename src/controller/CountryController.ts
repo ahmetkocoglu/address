@@ -9,21 +9,33 @@ export class CountryController {
     private addressRepository = AppDataSource.getRepository(Address)
 
     async all(request: Request, response: Response, next: NextFunction) {
-        return this.countryRepository.find({ relations: { address: true, city: { district: { town: true } } } })
+        return this.countryRepository.find({
+            relations: {
+                address: true,
+                city: {
+                    district: {
+                        town: true,
+                    }
+                }
+            },
+            order: {
+                name: 'ASC',
+            }
+        })
     }
 
-    async countryUsers(request: Request, response: Request, next: NextFunction){
+    async countryUsers(request: Request, response: Request, next: NextFunction) {
         const countryId = parseInt(request.params.countryId)
 
-        const country = await this.countryRepository.findOne({where:{id: countryId}})
+        const country = await this.countryRepository.findOne({ where: { id: countryId } })
 
-        if(!country){
+        if (!country) {
             return "ülke bulunamadı"
         }
-        
-        const address = await this.addressRepository.find({where: {country}})
 
-        if(!address){
+        const address = await this.addressRepository.find({ where: { country } })
+
+        if (!address) {
             return "adres bulunamadı"
         }
 
