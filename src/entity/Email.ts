@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm"
 import { User } from "./User"
 
-enum type { JOB = 'iş', HOME = 'ev' };
+enum type { HOME = 'ev', CENTER = 'centre', BRANCH = 'branch' };
 
 @Entity()
 export class Email {
@@ -12,7 +12,7 @@ export class Email {
     @Column({ type: "enum", enum: type, default: type.HOME })
     emailType: type
 
-    @Column()
+    @Column({type: 'varchar', length: 100})
     emailAddress: string
 
     @ManyToOne(() => User, (user) => user.id)
